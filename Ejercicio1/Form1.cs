@@ -9,19 +9,9 @@ namespace Ejercicio1
 
         private int SumarRecursivo(int N)
         {
-            int resultado = N;
             if (N != 0)
-            {
-                resultado += SumarRecursivo(Math.Abs(N) - 1) * (Math.Abs(N) - Math.Abs(N - 1));
-            }
-            if (N == 0)
-            {
-                resultado = 0;
-            }
-            return resultado;
-
-
-            
+                N += SumarRecursivo(Math.Abs(N) - 1) * (Math.Abs(N) - Math.Abs(N - 1));
+            return N;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
