@@ -12,7 +12,7 @@ namespace Ejercicio2
             List<int> resultado;
             if (n < 0)
             {
-                resultado = new List<int>();
+                resultado = [];
             }
             else
             {
