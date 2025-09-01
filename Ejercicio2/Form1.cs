@@ -9,17 +9,18 @@ namespace Ejercicio2
 
         private List<int> DevolverParesRecursivo(int n)
         {
-
+            List<int> resultado;
             if (n < 0)
-                return new List<int>();
-
-            // es interesante que la lista recien va a existir en el caso base
-            var lista = DevolverParesRecursivo(n - 1);
-            if (n % 2 == 0)
-                lista.Add(n);
-
-            return lista;
-
+            {
+                resultado = new List<int>();
+            }
+            else
+            {
+                resultado = DevolverParesRecursivo(n - 1);
+                if (n % 2 == 0)
+                    resultado.Add(n);
+            }
+            return resultado;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
