@@ -16,6 +16,11 @@ namespace Ejercicio4
             {
                 l = [];
                 l.Add(0);
+            }
+            else if (n == 2)
+            {
+                l = [];
+                l.Add(0);
                 l.Add(1);
             }
             else
