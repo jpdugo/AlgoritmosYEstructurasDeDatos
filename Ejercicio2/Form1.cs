@@ -7,28 +7,27 @@ namespace Ejercicio2
             InitializeComponent();
         }
 
-        private List<int> DevolverParesRecursivo(int n, List<int> listaAcumuladora)
+        private List<int> DevolverParesRecursivo(int n)
         {
 
             if (n < 0)
-                return listaAcumuladora;
+                return new List<int>();
 
+            // es interesante que la lista recien va a existir en el caso base
+            var lista = DevolverParesRecursivo(n - 1);
             if (n % 2 == 0)
-            {
-                listaAcumuladora.Add(n);
-            }
+                lista.Add(n);
 
-            return DevolverParesRecursivo(n - 1, listaAcumuladora);
-                
+            return lista;
+
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            
-            List<int> list = new List<int>();
-            DevolverParesRecursivo(Convert.ToInt32(numericUpDown1.Value), list);
-
-            textBox1.Text = string.Join(",", list);
+            textBox1.Text = string.Join(
+                ",",
+                DevolverParesRecursivo(Convert.ToInt32(numericUpDown1.Value))
+            );
         }
     }
 }
