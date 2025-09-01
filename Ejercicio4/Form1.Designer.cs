@@ -32,6 +32,8 @@
             numericUpDown1 = new NumericUpDown();
             label1 = new Label();
             label2 = new Label();
+            textBox1 = new TextBox();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
@@ -46,9 +48,11 @@
             // numericUpDown1
             // 
             numericUpDown1.Location = new Point(61, 52);
+            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(120, 23);
             numericUpDown1.TabIndex = 1;
+            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             // 
             // label1
@@ -70,11 +74,29 @@
             label2.TabIndex = 3;
             label2.Text = "N: ";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(108, 94);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(119, 23);
+            textBox1.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 102);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Último Término";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(textBox1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(numericUpDown1);
@@ -92,5 +114,7 @@
         private NumericUpDown numericUpDown1;
         private Label label1;
         private Label label2;
+        private TextBox textBox1;
+        private Label label3;
     }
 }
