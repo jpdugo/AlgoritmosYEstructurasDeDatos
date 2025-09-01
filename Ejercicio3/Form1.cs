@@ -7,7 +7,7 @@ namespace Ejercicio3
             InitializeComponent();
         }
 
-        private int ElevarRecursivo(int n, int p)
+        private double ElevarRecursivo(double n, double p)
         {
             if (p > 0)
                 n *= ElevarRecursivo(n, p - 1);
@@ -20,7 +20,7 @@ namespace Ejercicio3
 
         private void LlamarElevarRecursivo()
         {
-            int res = ElevarRecursivo(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value));
+            double res = ElevarRecursivo((double)numericUpDown1.Value, (double)numericUpDown2.Value);
             textBox1.Text = res.ToString();
         }
 
