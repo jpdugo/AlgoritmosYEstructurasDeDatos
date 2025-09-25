@@ -41,6 +41,9 @@
             label1 = new Label();
             button10 = new Button();
             label2 = new Label();
+            listBox2 = new ListBox();
+            label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -116,9 +119,9 @@
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(456, 0);
+            listBox1.Location = new Point(456, 40);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(131, 424);
+            listBox1.Size = new Size(131, 384);
             listBox1.TabIndex = 7;
             // 
             // button8
@@ -139,6 +142,7 @@
             button9.TabIndex = 9;
             button9.Text = "Borrar en pos N";
             button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
             // 
             // label1
             // 
@@ -146,7 +150,7 @@
             label1.Name = "label1";
             label1.Size = new Size(173, 70);
             label1.TabIndex = 10;
-            label1.Text = "Seleccione un item de la lista para utilizar los botones de abajo:";
+            label1.Text = "Seleccione un item de la lista 2 para utilizar los botones de abajo:";
             // 
             // button10
             // 
@@ -164,13 +168,42 @@
             label2.Name = "label2";
             label2.Size = new Size(202, 61);
             label2.TabIndex = 12;
-            label2.Text = "Debe elegir dos elementos de la lista para que funcione swap";
+            label2.Text = "Debe elegir dos elementos de la lista 2 para que funcione swap";
+            // 
+            // listBox2
+            // 
+            listBox2.FormattingEnabled = true;
+            listBox2.Location = new Point(613, 40);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(137, 384);
+            listBox2.TabIndex = 13;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(456, 8);
+            label3.Name = "label3";
+            label3.Size = new Size(116, 20);
+            label3.TabIndex = 14;
+            label3.Text = "Lista 1 (Mostrar)";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(613, 4);
+            label4.Name = "label4";
+            label4.Size = new Size(154, 20);
+            label4.TabIndex = 15;
+            label4.Text = "Lista 2 (MostrarBisBis)";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(622, 466);
+            ClientSize = new Size(806, 466);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(listBox2);
             Controls.Add(label2);
             Controls.Add(button10);
             Controls.Add(label1);
@@ -188,6 +221,7 @@
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -205,5 +239,8 @@
         private Label label1;
         private Button button10;
         private Label label2;
+        private ListBox listBox2;
+        private Label label3;
+        private Label label4;
     }
 }

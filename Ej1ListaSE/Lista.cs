@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -278,6 +279,51 @@ namespace Ej1ListaSE
                 pNodo = BuscarPosRecursivo(pNodo.Siguiente, pos - 1);
             }
            return pNodo;
+        }
+
+        public Lista Clonar()
+        {
+            Lista lclonar = new Lista();
+            return ClonarListaRecursivo(lclonar, centinela.Siguiente);
+        } 
+
+        private Lista ClonarListaRecursivo(Lista lclonar, Nodo pNodo)
+        {
+            if (pNodo.Siguiente != null) // ojo con usar centinela aca!!
+            {
+                lclonar.AgregarUltimo(pNodo);
+                lclonar = ClonarListaRecursivo(lclonar, pNodo.Siguiente);
+            }
+            return lclonar;
+        }
+
+        public Nodo BorrarEnPosN(int pos)
+        {
+            Nodo nodo = null;
+            if (pos == 1)
+            {
+                nodo = BorrarPrimero();
+            }
+            else if (pos == Cantidad())
+            {
+                nodo = BorrarUltimo();
+            }
+            else if (pos < Cantidad() && pos > 1)
+            {
+                Nodo nodoAnterior = BuscarAnteriorPosN(pos);
+                Nodo nodoAux = nodoAnterior.Siguiente;
+
+                nodoAnterior.Siguiente = nodoAux.Siguiente;
+
+                nodoAux.Siguiente = null;
+
+                nodo = nodoAux;
+            }
+
+
+            return nodo;
+            
+
         }
     }
 }

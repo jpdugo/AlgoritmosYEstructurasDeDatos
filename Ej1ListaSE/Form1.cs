@@ -17,12 +17,14 @@ namespace Ej1ListaSE
             lista = new Lista();
             listaAux = new Lista();
             listBox1.SelectionMode = SelectionMode.MultiSimple;
+            listBox2.SelectionMode = SelectionMode.MultiSimple;
         }
 
         private void Mostrar()
         {
             listBox1.Items.Clear();
             Nodo nodoAux = new Nodo();
+            listaAux = new Lista();
             while ((nodoAux = lista.BorrarPrimero()) != null)
             {
                 listBox1.Items.Add(nodoAux.Descriptor);
@@ -34,6 +36,37 @@ namespace Ej1ListaSE
             }
         }
 
+        private void MostrarBisBis()
+        {
+            listBox2.Items.Clear();
+            Nodo nodoAux = new Nodo();
+            listaAux = new Lista();
+            while ((nodoAux = lista.BorrarPrimero()) != null)
+            {
+                listBox2.Items.Add(nodoAux.Descriptor);
+                listaAux.AgregarUltimo(nodoAux);
+            }
+            lista = listaAux;
+        }
+
+        // Sin terminar!
+        private void MostrarBis()
+        {
+            listBox2.Items.Clear();
+            listaAux = new Lista();
+            MostrarRecursivo();
+        }
+
+        private void MostrarRecursivo()
+        {
+            Nodo nodoAux;
+            if ((nodoAux = lista.BorrarPrimero()) != null)
+            {
+                listBox2.Items.Add(nodoAux.Descriptor);
+                listaAux.AgregarUltimo(nodoAux);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             // Agregar al final
@@ -42,6 +75,7 @@ namespace Ej1ListaSE
             Nodo nodo = new Nodo(descriptor);
             lista.AgregarUltimo(nodo);
             Mostrar();
+            MostrarBisBis();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,6 +86,7 @@ namespace Ej1ListaSE
             Nodo nodo = new Nodo(descriptor);
             lista.AgregarPrimero(nodo);
             Mostrar();
+            MostrarBisBis();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -68,6 +103,7 @@ namespace Ej1ListaSE
             }
             MessageBox.Show(mensaje);
             Mostrar();
+            MostrarBisBis();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -76,6 +112,7 @@ namespace Ej1ListaSE
             string mensaje = nodoBorrado != null ? nodoBorrado.Descriptor : "";
             MessageBox.Show(mensaje);
             Mostrar();
+            MostrarBisBis();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -94,6 +131,7 @@ namespace Ej1ListaSE
                 else
                 {
                     Mostrar();
+                    MostrarBisBis();
                 }
             }
             else
@@ -105,7 +143,7 @@ namespace Ej1ListaSE
 
         private void button6_Click(object sender, EventArgs e)
         {
-            int seleccionado = listBox1.SelectedIndex;
+            int seleccionado = listBox2.SelectedIndex;
             if (seleccionado == -1)
                 MessageBox.Show("Debe seleccionar un elemento de la lista primero");
 
@@ -115,12 +153,13 @@ namespace Ej1ListaSE
             }
 
             Mostrar();
+            MostrarBisBis();
 
 
         }
         private void button7_Click(object sender, EventArgs e)
         {
-            int seleccionado = listBox1.SelectedIndex;
+            int seleccionado = listBox2.SelectedIndex;
             if (seleccionado == -1)
                 MessageBox.Show("Debe seleccionar un elemento de la lista primero");
             else if (!lista.IntercambiarIzquierda(seleccionado + 1))
@@ -129,6 +168,7 @@ namespace Ej1ListaSE
             }
 
             Mostrar();
+            MostrarBisBis();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -138,17 +178,35 @@ namespace Ej1ListaSE
 
         private void button10_Click(object sender, EventArgs e)
         {
-            
-            ListBox.SelectedIndexCollection seleccion = listBox1.SelectedIndices;
+
+            ListBox.SelectedIndexCollection seleccion = listBox2.SelectedIndices;
             if (seleccion.Count > 1)
             {
                 bool exito = lista.Swap(seleccion[0] + 1, seleccion[1] + 1);
-                if (!exito) 
+                if (!exito)
                     MessageBox.Show("no estan dadas las condiciones para hacer el swap");
             }
 
             Mostrar();
+            MostrarBisBis();
 
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string indice = Interaction.InputBox(
+                "Ingresa un indice mayor que 0",
+                "", rand.Next(lista.Cantidad() + 1).ToString()
+             );
+
+            int resultado;
+            if (int.TryParse(indice, out resultado))
+            {
+                Nodo nodoBorrado = lista.BorrarEnPosN(resultado);
+            }
+            
+            Mostrar();
+            MostrarBisBis();
         }
     }
 }
