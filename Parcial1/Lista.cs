@@ -125,5 +125,59 @@ namespace Parcial1
             }
             return contador;
         }
+
+        public void Swap(int posIzq, int posDer)
+        {
+            if (posIzq > posDer)
+            {
+                int posAux = posDer;
+                posDer = posIzq;
+                posIzq = posAux;
+            }
+
+            if (posIzq > 0 && posDer <= Cantidad() && posIzq != posDer)
+            {
+                if (posDer - posIzq == 1) // son contiguos
+                {
+                    if (posIzq == 1)
+                    {
+                        Nodo derecha = BuscarPosN(2);
+                        Nodo izquierda = centinela.Siguiente;
+                        izquierda.Siguiente = derecha.Siguiente;
+                        centinela.Siguiente = derecha;
+                        derecha.Siguiente = izquierda;
+                    }
+                    else if (posIzq > 1)
+                    {
+                        Nodo izquierdaAnterior = BuscarPosN(posIzq -1);
+                        Nodo izquierda = izquierdaAnterior.Siguiente;
+                        Nodo derecha = izquierda.Siguiente;
+                        Nodo derechaSiguiente = derecha.Siguiente;
+
+                        izquierdaAnterior.Siguiente = derecha;
+                        derecha.Siguiente = izquierda;
+
+                        
+                    }
+                }
+                else if (posDer - posIzq > 1)
+                {
+                    Nodo izqAnterior = posIzq == 1 ? centinela : BuscarPosN(posIzq - 1);
+                    Nodo izquierda = izqAnterior.Siguiente;
+                    Nodo izqSiguiente = izquierda.Siguiente;
+
+                    Nodo derAnterior = BuscarPosN(posDer - 1);
+                    Nodo derecha = derAnterior.Siguiente;
+                    Nodo derechaSiguiente = derecha.Siguiente;
+
+
+                    izqAnterior.Siguiente = derecha;
+                    derecha.Siguiente = izqSiguiente;
+                    // en este punto perdi derecha.siguiente si no lo guarde
+                    derAnterior.Siguiente = izquierda;
+                    izquierda.Siguiente = derechaSiguiente;
+                }
+            }
+        }
     }
 }

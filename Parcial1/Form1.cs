@@ -32,20 +32,20 @@ namespace Parcial1
                 pila.Apilar(nodoAux);
             }
 
-            pila = MostrarPilaRecursivo(pila, new Pila(), new Pila());
+            pila = MostrarPilaRecursivo(new Pila(), new Pila());
 
             string caca = "caca";
 
         }
 
-        private Pila MostrarPilaRecursivo(Pila pilaOriginal, Pila pilaAux, Pila pilaOriginalReconstruida)
+        private Pila MostrarPilaRecursivo(Pila pilaAux, Pila pilaOriginalReconstruida)
         {
-            Nodo nodo = pilaOriginal.Desapilar();
+            Nodo nodo = pila.Desapilar();
             
             if (nodo != null)
             {
                 listBox1.Items.Add($"{nodo.Palo} - {nodo.Numero}");
-                MostrarPilaRecursivo(pilaOriginal, pilaAux, pilaOriginalReconstruida);
+                MostrarPilaRecursivo(pilaAux, pilaOriginalReconstruida);
                 pilaAux.Apilar(nodo);
                 Nodo nodoAuxDesapilado = pilaAux.Desapilar();
                 pilaOriginalReconstruida.Apilar(nodoAuxDesapilado);
